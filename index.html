@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摸鱼计算器 - 实时工资计算器</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="container" id="app">
+        <!-- 金币动画容器 -->
+        <div class="coin-container" id="coinContainer"></div>
+        
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <div class="nav-title">🐟摸鱼计算器</div>
+            <div class="nav-icon" id="themeToggle">
+                <img id="themeIcon" src="assets/icons/moon.png" alt="切换主题">
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 输入区域 (初始显示) -->
+            <div id="inputSection" class="section-visible">
+                <!-- 年薪/月薪切换 -->
+                <div class="tabs card">
+                    <div class="tab active" data-type="year">年薪</div>
+                    <div class="tab" data-type="month">月薪</div>
+                    <div class="tab-indicator"></div>
+                </div>
+                
+                <!-- 薪资输入 -->
+                <div class="input-section card">
+                    <div class="input-row">
+                        <div class="input-group flex-grow">
+                            <label class="input-label" id="salaryLabel">💰输入您的年薪</label>
+                            <div class="input-wrapper">
+                                <div class="input-prefix" id="currencySymbol">¥</div>
+                                <input type="number" id="salaryInput" class="input-field" placeholder="例如：300000">
+                            </div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label class="input-label">🤑选择货币</label>
+                            <select id="currencySelect" class="currency-select">
+                                <option value="CNY">人民币 (CNY)</option>
+                                <option value="USD">美元 (USD)</option>
+                                <option value="GBP">英镑 (GBP)</option>
+                                <option value="JPY">日元 (JPY)</option>
+                                <option value="EUR">欧元 (EUR)</option>
+                                <option value="HKD">港币 (HKD)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button id="startCalculation" class="btn">开始计算</button>
+                </div>
+            </div>
+
+            <style>
+                .input-row {
+                    display: flex;
+                    gap: 20px;
+                    align-items: flex-end;
+                    margin-bottom: 20px;
+                }
+
+                .flex-grow {
+                    flex: 1;
+                }
+
+                .input-group {
+                    margin-bottom: 0;
+                }
+
+                .currency-select {
+                    min-width: 140px;
+                }
+
+                .motivation-card {
+                    margin-top: 20px;
+                    padding: 15px 20px;
+                    border-radius: 12px;
+                    background: linear-gradient(135deg, #ff4e50, #f9d423);
+                    cursor: pointer;
+                    transition: transform 0.2s ease;
+                }
+
+                .motivation-card:hover {
+                    transform: translateY(-2px);
+                }
+
+                .motivation-card p {
+                    margin: 0;
+                    color: white;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    text-align: center;
+                    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+                }
+
+                #inputSection, #timerSection {
+                    display: block !important;
+                }
+
+                .section-hidden {
+                    display: block !important;
+                }
+            </style>
+
+            
+            <!-- 计时器区域 (初始隐藏) -->
+            <div id="timerSection" class="section-hidden">
+                <div class="timer-section card">
+                    <div class="timer-display">
+                        <div class="timer-circle">
+                            <div class="timer-content">
+                                <div id="timerAmount" class="timer-amount">¥ 0.00</div>
+                                <div id="timerCurrency" class="timer-currency">CNY</div>
+                                <div id="timerRate" class="timer-rate">¥ 0.00 / 秒</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timer-controls">
+                        <div id="playPauseBtn" class="control-btn play-btn">
+                            <img src="assets/icons/play.png" alt="开始/暂停">
+                        </div>
+                        <div id="resetBtn" class="control-btn reset-btn">
+                            <img src="assets/icons/reset.png" alt="重置">
+                        </div>
+                        <div id="recordBtn" class="control-btn record-btn">
+                            <img src="assets/icons/records.png" alt="记录">
+                        </div>
+                    </div>
+                    
+                    <div class="timer-details">
+                        <div class="detail-item">
+                            <span>每分钟摸鱼工资</span>
+                            <span id="perMinute">¥ 0.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>每小时摸鱼工资</span>
+                            <span id="perHour">¥ 0.00</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>摸鱼计时</span>
+                            <span id="timerTime">0:00:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <!-- 励志语录模块 -->
+         <div class="motivation-card" id="motivationCard">
+            <p id="motivationText">“🎉今别怕上班摸鱼，老板也没认真赚钱“ 👉点我</p>
+        </div>           
+            <!-- 记录列表 (条件显示) -->
+            <div id="recordsSection" class="section-hidden">
+                <div class="records-section card">
+                    <div class="records-header">
+                        <div class="records-title">📝记录列表</div>
+                        <a href="pages/records.html" class="view-all">查看全部</a>
+                    </div>
+                    
+                    <div id="recordsList" class="record-list">
+                        <!-- 记录项将通过JavaScript动态添加 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="tab-bar">
+            <div class="tab-item active">
+                <img src="assets/icons/calculator.png" alt="计算器">
+                <span>计算器</span>
+            </div>
+            <a href="pages/records.html" class="tab-item">
+                <img src="assets/icons/record.png" alt="记录">
+                <span>记录</span>
+            </a>
+            <a href="pages/settings.html" class="tab-item">
+                <img src="assets/icons/settings.png" alt="设置">
+                <span>设置</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html>

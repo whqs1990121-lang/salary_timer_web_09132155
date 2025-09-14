@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - 薪资流</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <div class="nav-title">⚙️设置</div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 工作时间设置 -->
+            <div class="settings-section card">
+                <div class="section-title">⏰工作时间设置</div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">每周工作天数</label>
+                    <select id="daysPerWeekSelect" class="setting-select">
+                        <option value="1">1 天</option>
+                        <option value="2">2 天</option>
+                        <option value="3">3 天</option>
+                        <option value="4">4 天</option>
+                        <option value="5" selected>5 天</option>
+                        <option value="6">6 天</option>
+                        <option value="7">7 天</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">每天工作小时数</label>
+                    <select id="hoursPerDaySelect" class="setting-select">
+                        <option value="1">1 小时</option>
+                        <option value="2">2 小时</option>
+                        <option value="3">3 小时</option>
+                        <option value="4">4 小时</option>
+                        <option value="5">5 小时</option>
+                        <option value="6">6 小时</option>
+                        <option value="7">7 小时</option>
+                        <option value="8" selected>8 小时</option>
+                        <option value="9">9 小时</option>
+                        <option value="10">10 小时</option>
+                        <option value="11">11 小时</option>
+                        <option value="12">12 小时</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">年假天数</label>
+                    <select id="vacationDaysSelect" class="setting-select">
+                        <option value="0">0 天</option>
+                        <option value="5">5 天</option>
+                        <option value="10">10 天</option>
+                        <option value="15" selected>15 天</option>
+                        <option value="20">20 天</option>
+                        <option value="25">25 天</option>
+                        <option value="30">30 天</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 显示设置 -->
+            <div class="settings-section card">
+                <div class="section-title">🎨显示设置</div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">主题模式</label>
+                    <div class="setting-switch" id="themeToggle">
+                        <span id="themeText">亮色</span>
+                        <div class="theme-indicator" id="themeIndicator">
+                            <div class="theme-handle"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">小数位数</label>
+                    <select id="decimalPlacesSelect" class="setting-select">
+                        <option value="0">0 位</option>
+                        <option value="1">1 位</option>
+                        <option value="2" selected>2 位</option>
+                        <option value="3">3 位</option>
+                        <option value="4">4 位</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">千位分隔符</label>
+                    <label class="switch">
+                        <input type="checkbox" id="thousandSeparatorSwitch" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 货币设置 -->
+            <div class="settings-section card">
+                <div class="section-title">💰货币设置</div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">默认输入货币</label>
+                    <select id="defaultInputCurrencySelect" class="setting-select">
+                        <option value="CNY" selected>人民币 (CNY)</option>
+                        <option value="USD">美元 (USD)</option>
+                        <option value="GBP">英镑 (GBP)</option>
+                        <option value="JPY">日元 (JPY)</option>
+                        <option value="EUR">欧元 (EUR)</option>
+                        <option value="HKD">港币 (HKD)</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">默认显示货币</label>
+                    <select id="defaultDisplayCurrencySelect" class="setting-select">
+                        <option value="CNY" selected>人民币 (CNY)</option>
+                        <option value="USD">美元 (USD)</option>
+                        <option value="GBP">英镑 (GBP)</option>
+                        <option value="JPY">日元 (JPY)</option>
+                        <option value="EUR">欧元 (EUR)</option>
+                        <option value="HKD">港币 (HKD)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 汇率设置 -->
+            <div class="settings-section card">
+                <div class="section-title">😄汇率设置</div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">更新频率</label>
+                    <select id="updateFrequencySelect" class="setting-select">
+                        <option value="daily" selected>每日</option>
+                        <option value="weekly">每周</option>
+                        <option value="open">每次打开</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">离线模式</label>
+                    <label class="switch">
+                        <input type="checkbox" id="offlineModeSwitch">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="setting-label">上次更新时间</label>
+                    <div class="setting-text" id="lastUpdatedText">未更新</div>
+                </div>
+                
+                <div class="setting-actions">
+                    <button class="btn btn-secondary" id="viewRatesBtn">查看汇率</button>
+                    <button class="btn" id="updateRatesBtn">立即更新</button>
+                </div>
+            </div>
+            
+            <!-- 保存按钮 -->
+            <button class="btn save-btn" id="saveSettingsBtn">保存设置</button>
+            
+            <!-- 版本信息 -->
+            <div class="version-info">
+                <div>薪资流 v1.0.0</div>
+            </div>
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="tab-bar">
+            <a href="../index.html" class="tab-item">
+                <img src="../assets/icons/calculator.png" alt="计算器">
+                <span>计算器</span>
+            </a>
+            <a href="records.html" class="tab-item">
+                <img src="../assets/icons/record.png" alt="记录">
+                <span>记录</span>
+            </a>
+            <div class="tab-item active">
+                <img src="../assets/icons/settings.png" alt="设置">
+                <span>设置</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/settings.js"></script>
+</body>
+</html>

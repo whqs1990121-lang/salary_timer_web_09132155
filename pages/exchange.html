@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汇率转换 - 🐟摸鱼计算器</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/exchange.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <div class="nav-back" id="backBtn">
+                <img src="../assets/icons/back.png" alt="返回">
+            </div>
+            <div class="nav-title">汇率转换</div>
+            <div class="nav-placeholder"></div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 汇率转换器 -->
+            <div class="converter-section card">
+                <div class="converter-header">
+                    <div class="section-title">货币转换</div>
+                    <div class="last-updated" id="lastUpdatedText">更新于: 未知</div>
+                </div>
+                
+                <div class="amount-input">
+                    <input type="number" id="amountInput" class="input-field" value="100">
+                </div>
+                
+                <div class="currency-selector">
+                    <div class="currency-from">
+                        <label class="currency-label">从</label>
+                        <select id="fromCurrencySelect" class="currency-select">
+                            <option value="CNY" selected>人民币 (CNY)</option>
+                            <option value="USD">美元 (USD)</option>
+                            <option value="GBP">英镑 (GBP)</option>
+                            <option value="JPY">日元 (JPY)</option>
+                            <option value="EUR">欧元 (EUR)</option>
+                            <option value="HKD">港币 (HKD)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="swap-btn" id="swapBtn">
+                        <img src="../assets/icons/swap.png" alt="交换">
+                    </div>
+                    
+                    <div class="currency-to">
+                        <label class="currency-label">到</label>
+                        <select id="toCurrencySelect" class="currency-select">
+                            <option value="CNY">人民币 (CNY)</option>
+                            <option value="USD" selected>美元 (USD)</option>
+                            <option value="GBP">英镑 (GBP)</option>
+                            <option value="JPY">日元 (JPY)</option>
+                            <option value="EUR">欧元 (EUR)</option>
+                            <option value="HKD">港币 (HKD)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="conversion-result">
+                    <div class="result-label">转换结果</div>
+                    <div class="result-value">
+                        <span id="resultSymbol">$</span>
+                        <span id="resultAmount">13.94</span>
+                    </div>
+                    <div class="result-formula" id="resultFormula">
+                        100 CNY = 13.94 USD
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 汇率表 -->
+            <div class="rates-section card">
+                <div class="section-title">汇率表</div>
+                
+                <div class="rates-table">
+                    <div class="table-header">
+                        <div class="table-cell">货币</div>
+                        <div class="table-cell">汇率 (兑人民币)</div>
+                    </div>
+                    
+                    <div class="table-body" id="ratesTableBody">
+                        <!-- 汇率行将通过JavaScript动态添加 -->
+                    </div>
+                </div>
+                
+                <button class="btn update-btn" id="updateRatesBtn">更新汇率</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/exchange.js"></script>
+</body>
+</html>

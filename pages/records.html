@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记录列表 - 🐟摸鱼计算器</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/records.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <div class="nav-title">📝记录列表</div>
+            <div class="nav-actions">
+                <div class="nav-icon" id="sortToggle">
+                    <img id="sortIcon" src="../assets/icons/sort_desc.png" alt="排序">
+                </div>
+                <div class="nav-icon" id="exportBtn">
+                    <img src="../assets/icons/export.png" alt="导出">
+                </div>
+            </div>
+        </div>
+        
+        <!-- 主要内容区域 -->
+        <div class="main-content">
+            <!-- 记录列表 -->
+            <div id="recordsListContainer" class="section-visible">
+                <div id="recordsList" class="records-list">
+                    <!-- 记录项将通过JavaScript动态添加 -->
+                </div>
+                
+                <div id="clearAllBtn" class="clear-all-btn">
+                    <span>清空所有记录</span>
+                </div>
+            </div>
+            
+            <!-- 空状态 -->
+            <div id="emptyState" class="section-hidden">
+                <div class="empty-state card">
+                    <img class="empty-icon" src="../assets/icons/empty.png" alt="暂无记录">
+                    <div class="empty-text">暂无记录</div>
+                    <div class="empty-subtext">开始计时并记录，您的数据将显示在这里</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="tab-bar">
+            <a href="../index.html" class="tab-item">
+                <img src="../assets/icons/calculator.png" alt="计算器">
+                <span>计算器</span>
+            </a>
+            <div class="tab-item active">
+                <img src="../assets/icons/record.png" alt="记录">
+                <span>记录</span>
+            </div>
+            <a href="settings.html" class="tab-item">
+                <img src="../assets/icons/settings.png" alt="设置">
+                <span>设置</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/records.js"></script>
+</body>
+</html>
